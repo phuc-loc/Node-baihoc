@@ -1,9 +1,8 @@
 const Product = require('../models/product');
-const Cart = require('../models/cart');
 
-//get Products / products-list
-exports.getProducts = (req, res, next) => {
-  Product.findAll()
+//
+exports.getProducts = (req, res, next) => { 
+  Product.fetchAll()
     .then(products => {
       res.render('shop/product-list', {
         prods: products,
@@ -16,7 +15,8 @@ exports.getProducts = (req, res, next) => {
     })
 };
 
-//product detail 
+
+//
 exports.getProduct = (req, res, next) => {
   const prodId = req.params.productId;
   // //**Cách 2 (dùng where )
@@ -31,7 +31,7 @@ exports.getProduct = (req, res, next) => {
   //     });
   //   })
   //   .catch(err => console.log(err));
-  Product.findByPk(prodId)
+  Product.findById(prodId)
     .then(product => {
       res.render('shop/product-detail', {
         product: product,
@@ -42,9 +42,9 @@ exports.getProduct = (req, res, next) => {
     .catch(err => console.log(err));
 };
 
-//list products o trang Index (shop)
+//
 exports.getIndex = (req, res, next) => {
-  Product.findAll()
+  Product.fetchAll()
     .then(products => {
       res.render('shop/index', {
         prods: products,
