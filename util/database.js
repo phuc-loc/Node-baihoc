@@ -1,5 +1,5 @@
 const mongodb = require('mongodb');
-const MongoClient = mongodb.MongoClient;
+const MongoClient = mongodb.MongoClient; 
 
 let _db 
 
@@ -23,4 +23,4 @@ const getDb = () => {
 }
 
 exports.mongoConnect = mongoConnect;
-exports.getDb = getDb;
+exports.getDb = getDb; 
